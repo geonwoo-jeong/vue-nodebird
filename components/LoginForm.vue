@@ -6,7 +6,7 @@
           <v-text-field v-model="email" :rules="emailRules" label="Email" type="email" required />
           <v-text-field
             v-model="password"
-            :rules="passwordlRules"
+            :rules="passwordRules"
             label="Password"
             type="password"
             required
