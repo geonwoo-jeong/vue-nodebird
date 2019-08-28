@@ -1,9 +1,32 @@
 <template>
-  <div>Profile {{name}}</div>
+  <v-container>
+    <v-card style="margin-bottom: 20px">
+      <v-container>
+        <v-subheader>My Profile</v-subheader>
+        <v-form>
+          <v-text-field label="Nickname" required />
+          <v-btn color="blue" type="submit">Edit</v-btn>
+        </v-form>
+      </v-container>
+    </v-card>
+    <v-card style="margin-bottom: 20px">
+      <v-subheader>Following</v-subheader>
+      <follow-list />
+    </v-card>
+    <v-card style="margin-bottom: 20px">
+      <v-subheader>Follower</v-subheader>
+      <follow-list />
+    </v-card>
+  </v-container>
 </template>
 
 <script>
+import FollowList from "~/components/FollowList"
+
 export default {
+  components: {
+    FollowList
+  },
   data() {
     return {
       name: "Nuxt.js"

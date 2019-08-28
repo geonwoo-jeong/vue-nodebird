@@ -1,24 +1,35 @@
 <template>
   <v-app>
-    <v-toolbar dark color="green">
-      <v-toolbar-items>
-        <v-toolbar-title :style="{display: 'flex', alignItems: 'center'}">
+    <nav>
+      <v-toolbar dark color="green">
+        <v-toolbar-title>
           <nuxt-link to="/">NodeBird</nuxt-link>
         </v-toolbar-title>
-        <v-btn nuxt to="/profile" :style="{ display: 'flex', alignItems: 'center'}">
-          <div>Profile</div>
-        </v-btn>
-        <v-btn nuxt to="/signup" :style="{ display: 'flex', alignItems: 'center'}">
-          <div>Sign Up</div>
-        </v-btn>
-      </v-toolbar-items>
-    </v-toolbar>
-    <v-layout>
-      <v-flex xs12 md4>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-text-field
+            hide-details
+            label="Search"
+            prepend-icon="mdi-magnify"
+            :style="{ display: 'flex', alignItems: 'center' }"
+          />
+          <v-btn text nuxt to="/profile" :style="{ display: 'flex', alignItems: 'center' }">
+            <div>Profile</div>
+          </v-btn>
+          <v-btn text nuxt to="/signup" :style="{ display: 'flex', alignItems: 'center' }">
+            <div>Sign Up</div>
+          </v-btn>
+        </v-toolbar-items>
+      </v-toolbar>
+    </nav>
+    <v-row no-gutters>
+      <v-col cols="12" xs="12" md="4">
         <login-form />
-      </v-flex>
-      <nuxt />
-    </v-layout>
+      </v-col>
+      <v-col cols="12" xs="12" md="8">
+        <nuxt />
+      </v-col>
+    </v-row>
   </v-app>
 </template>
 

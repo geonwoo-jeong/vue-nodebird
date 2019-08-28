@@ -1,10 +1,15 @@
 <template>
   <v-container>
-    <v-form>
-      <v-text-field label="E-MAIL" type="email" required />
-      <v-text-field label="PASSWORD" type="password" required />
-      <v-btn type="submit" color="green">LOG IN</v-btn>
-    </v-form>
+    <v-card>
+      <v-form>
+        <v-container>
+          <v-text-field label="Email" type="email" required />
+          <v-text-field label="Password" type="password" required />
+          <v-btn color="green" type="submit">Log In</v-btn>
+          <v-btn nuxt to="/signup">Sign Up</v-btn>
+        </v-container>
+      </v-form>
+    </v-card>
   </v-container>
 </template>
 
