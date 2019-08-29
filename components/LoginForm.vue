@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container v-if="!me">
     <v-card>
       <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-container>
@@ -15,6 +15,12 @@
           <v-btn nuxt to="/signup">Sign Up</v-btn>
         </v-container>
       </v-form>
+    </v-card>
+  </v-container>
+  <v-container v-else>
+    <v-card>
+      Logged In {{me.nickName}}
+      <v-btn @click="onLogOut">Log Out</v-btn>
     </v-card>
   </v-container>
 </template>
@@ -33,9 +39,22 @@ export default {
       passwordRules: [v => !!v || "Password is Required"]
     };
   },
+  computed: {
+    me() {
+      return this.$store.state.users.me;
+    }
+  },
   methods: {
     onSubmitForm() {
-      this.$refs.form.validate();
+      if (this.$refs.form.validate()) {
+        this.$store.dispatch("users/logIn", {
+          email: this.email,
+          nickName: "Jeong"
+        });
+      }
+    },
+    onLogOut() {
+      this.$store.dispatch("users/logOut");
     }
   }
 };

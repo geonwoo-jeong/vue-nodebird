@@ -62,8 +62,22 @@ export default {
     };
   },
   methods: {
-    onSubmitForm() {
-      this.$refs.form.validate();
+    async onSubmitForm() {
+      if (this.$refs.form.validate()) {
+        try {
+          const result = this.$store.dispatch("users/signUp", {
+            nickName: this.nickName,
+            email: this.email
+          });
+          if (result) {
+            this.$router.push({
+              path: "/"
+            });
+          }
+        } catch (e) {
+          alert("Somthing went wrong");
+        }
+      }
     }
   },
   head() {
