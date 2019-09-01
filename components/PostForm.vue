@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card style="margin-bottom: 20px">
     <v-container>
       <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
         <v-textarea
@@ -14,9 +14,9 @@
           :rules="[v => !!v.trim() || 'Please input some text.']"
           @input="onChangeTextarea"
         />
+        <v-btn type="submit" color="green" absolute right>Twit</v-btn>
+        <v-btn>Image Upload</v-btn>
       </v-form>
-      <v-btn type="submit" color="green" absolute right>Twit</v-btn>
-      <v-btn>Image Upload</v-btn>
     </v-container>
   </v-card>
 </template>
@@ -26,6 +26,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
+      valida: false,
       hideDetails: false,
       successMessages: "",
       success: false,
@@ -40,7 +41,7 @@ export default {
       this.hideDetails = true;
     },
     onSubmitForm() {
-      if (this.$ref.form.validate()) {
+      if (this.$refs.form.validate()) {
         this.$store
           .dispatch("posts/add", {
             content: this.content,
@@ -53,6 +54,7 @@ export default {
             createdAt: Date.now()
           })
           .then(() => {
+            this.content = "";
             this.hideDetails = false;
             this.success = true;
             this.successMessages = "post success";
