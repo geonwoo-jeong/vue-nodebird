@@ -9,7 +9,7 @@
           clearable
           label="What's Happen?"
           :hide-details="hideDetails"
-          :success-messages="successMessage"
+          :success-messages="successMessages"
           :success="success"
           :rules="[v => !!v.trim() || 'Please input some text.']"
           @input="onChangeTextarea"
@@ -37,8 +37,12 @@ export default {
     ...mapState("users", ["me"])
   },
   methods: {
-    onChangeTextarea() {
-      this.hideDetails = true;
+    onChangeTextarea(value) {
+      if (value.length) {
+        this.hideDetails = true;
+        this.success = false;
+        this.successMessages = "";
+      }
     },
     onSubmitForm() {
       if (this.$refs.form.validate()) {
