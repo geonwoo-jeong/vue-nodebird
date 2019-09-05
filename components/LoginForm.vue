@@ -19,8 +19,10 @@
   </v-container>
   <v-container v-else>
     <v-card>
-      Logged In {{me.nickName}}
-      <v-btn @click="onLogOut">Log Out</v-btn>
+      <v-container>
+        Logged In {{me.nickName}}
+        <v-btn @click="onLogOut">Log Out</v-btn>
+      </v-container>
     </v-card>
   </v-container>
 </template>

@@ -1,10 +1,15 @@
 export const state = () => ({
-  me: null
+  me: null,
+  follwerList: [],
+  followingList: []
 });
 
 export const mutations = {
   setMe(state, payload) {
     state.me = payload;
+  },
+  changeNickName(state, payload) {
+    state.me.nickName = payload.nickName;
   }
 };
 
@@ -17,5 +22,8 @@ export const actions = {
   },
   logOut({ commit }, payload) {
     commit("setMe", null);
+  },
+  changeNickName({ commit }, payload) {
+    commit("changeNickName", payload);
   }
 };
